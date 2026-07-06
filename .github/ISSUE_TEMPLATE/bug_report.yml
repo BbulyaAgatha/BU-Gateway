@@ -7,7 +7,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to fill out this bug report! Please be as detailed as possible.
+        Thanks for taking the time to fill out this bug report! Please be as detailed as possible to help us squash it quickly.
 
   - type: textarea
     id: description
@@ -15,6 +15,42 @@ body:
       label: 🐛 Bug Description
       description: A clear and concise description of what the bug is.
       placeholder: "When I tap on the 'Student Portal' link, nothing happens..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: 🚨 Severity & Impact
+      description: How critical is this issue to the usability of the app?
+      options:
+        - "Critical (App crashes, complete blocker, data loss)"
+        - "Major (Major feature broken, but workaround exists)"
+        - "Minor (Annoyance, small functional glitch, UI/UX issue)"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: 🧩 Affected Component
+      description: Which part of BU Gateway is experiencing the issue?
+      options:
+        - Authentication / Login
+        - Student Portal / Dashboard
+        - Courses & Grades
+        - Notifications / Announcements
+        - User Profile & Settings
+        - Other / Unknown
+    validations:
+      required: true
+
+  - type: input
+    id: app-version
+    attributes:
+      label: 🚀 App Version
+      description: What version of BU Gateway are you using? (e.g., v1.4.2)
+      placeholder: "v1.4.2"
     validations:
       required: true
 
@@ -28,6 +64,18 @@ body:
         2. Tap on '...'
         3. Scroll down to '...'
         4. See error
+    validations:
+      required: true
+
+  - type: dropdown
+    id: reproducibility
+    attributes:
+      label: 🔄 Reproducibility
+      description: How often does this happen?
+      options:
+        - "100% (Happens every single time)"
+        - "Intermittent (Happens sometimes, but not always)"
+        - "One-off (Only happened once so far)"
     validations:
       required: true
 
@@ -51,7 +99,7 @@ body:
     id: platform
     attributes:
       label: 📱 Platform
-      description: Where did you encounter this bug?
+      description: Where did you encounter this bug? (Select all that apply)
       multiple: true
       options:
         - Android
@@ -63,20 +111,36 @@ body:
       required: true
 
   - type: input
+    id: device-details
+    attributes:
+      label: 🛠️ Device & OS Details
+      description: Specific device details can help track hardware issues (e.g., Pixel 8 / Android 15, iPhone 16 / iOS 19)
+      placeholder: "Samsung Galaxy S24, Android 14"
+
+  - type: input
     id: flutter-version
     attributes:
       label: 🦋 Flutter Version
-      description: Run `flutter --version` and paste the result
+      description: If you are a developer, run `flutter --version` and paste the result
       placeholder: "Flutter 3.x.x"
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 🪵 Crash Logs / Stack Trace
+      description: Paste any terminal errors, crash logs, or `flutter run` console output here.
+      render: text
+      placeholder: |
+        Uncaught TypeError: Cannot read properties of null (reading 'toString')...
 
   - type: textarea
     id: screenshots
     attributes:
       label: 🖼️ Screenshots
-      description: If applicable, add screenshots or a screen recording to help explain your problem.
+      description: Drag and drop screenshots or a screen recording to help explain your problem.
 
   - type: textarea
     id: additional
     attributes:
       label: 📝 Additional Context
-      description: Add any other context about the problem here.
+      description: Add any other context about the network conditions, user account type, etc.
